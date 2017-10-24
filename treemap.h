@@ -55,7 +55,7 @@ public:
         tree.write(o);
     }
 
-    KeyValuePair<Key,Value>* find (const Key & k){
+    KeyValuePair<Key,Value>* find (const Key & k) const{
 
 
         if(tree.find(KeyValuePair<Key, Value>(k)) != nullptr) {

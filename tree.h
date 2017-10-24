@@ -72,25 +72,57 @@ public:
 
 
      }
-
+        return nullptr; // to ignore warning of may reach end of non-void funtion
 
         }
     }
 
-    TreeNode<T>* find(T item){
+    TreeNode<T>* find(T item) {
 
-        TreeNode<T>* current = root.get();
-        T currentData = current->data;
 
-        while(currentData != item){
+        TreeNode<T> *current = root.get();
 
-            
+        if (current == nullptr) {
+            return nullptr;
+
+        } else {
+            current = root.get();
+
+
+            while (current != nullptr) {
+
+                if (item < current->data) {
+                    if (current->leftChild == nullptr) {
+                        return nullptr;
+
+                    } else {
+                        current = current->leftChild.get();
+                    }
+
+
+                } else if (current->data < item) {
+
+                    if (current->rightChild == nullptr) {
+
+                        return nullptr;
+
+                    } else {
+                        current = current->rightChild.get();
+
+                    }
+
+
+                } else {
+                    return current;
+                }
+
+
+            }
+
+            return nullptr;
+
 
         }
-
-
-
-
     }
 
 };

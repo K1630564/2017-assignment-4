@@ -23,45 +23,71 @@ public:
 
     TreeNode<T>* insert(T it){
 
-        T* hej = &root->data;
-        TreeNode<T>* ins = new TreeNode<T>(it);
-        TreeNode<T>* current = new TreeNode<T>(*hej);
-        BinarySearchTree* bst = new BinarySearchTree;
-        cout << ins->data << endl;
-        cout << current->data << endl;
+        TreeNode<T>* current = root.get();
 
-        if(root != nullptr) {
-/*
+        if(current == nullptr){
+            TreeNode<T>* newNode = new TreeNode<T>(it);
+            newNode->leftChild = nullptr;
+            newNode->rightChild = nullptr;
 
-            if (ins->data < root->data) {
-                //go to leftChild
-                current->leftChild;
-                current->setLeftChild(ins);
-                this->insert(it);
-
-
-            } else if (root->data < ins->data) {
-                // go to right child
-                current->rightChild;
-                current->setRightChild(ins);
-                this->insert(it);
+            root.reset(newNode);
+            current = newNode;
+            return newNode;
+            
+        }
+        else {
+             current = root.get();
+            
+     while(current != nullptr) {
 
 
-            } else {
+         if (it < current->data) {
+             if (current->leftChild == nullptr) {
+                 TreeNode<T>* newNode = new TreeNode<T>(it);
+                 current->setLeftChild(newNode);
+                 current = newNode;
+                 return newNode;
 
-                this->insert(it);
-            }
+             } else {
+                 current = current->leftChild.get();
 
-            return ins;
+             }
 
-                */
+         } else if (current->data < it) {
+             if (current->rightChild == nullptr) {
+                 TreeNode<T>* newNode = new TreeNode<T>(it);
+                 current->setRightChild(newNode);
+                 current = newNode;
+                 return newNode;
+
+             } else {
+                 current = current->rightChild.get();
+
+             }
+
+         } else {
+             return current;
+
+         }
+
+
+     }
+
+
+        }
+    }
+
+    TreeNode<T>* find(T item){
+
+        TreeNode<T>* current = root.get();
+        T currentData = current->data;
+
+        while(currentData != item){
+
+            
+
         }
 
-        else{
-            root.reset(ins);
-            cout << &root->leftChild << endl;
-            return ins;
-        }
 
 
 

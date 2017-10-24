@@ -21,7 +21,7 @@ public:
         root->write(o);
     }
 
-    TreeNode<T>* insert(T it){
+    TreeNode<T>* insert(const T it){
 
         TreeNode<T>* current = root.get();
 
@@ -77,7 +77,7 @@ public:
         }
     }
 
-    TreeNode<T>* find(T item) {
+    TreeNode<T>* find(const T item) const {
 
 
         TreeNode<T> *current = root.get();

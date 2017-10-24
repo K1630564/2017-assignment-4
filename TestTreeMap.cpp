@@ -44,6 +44,8 @@ int main() {
                 ++retval;
             }
         }
+
+
         
         {
             auto six = tree.find(6);
@@ -70,7 +72,7 @@ int main() {
 
         cout << endl;
         
-        
+
     }         
     
     return retval;

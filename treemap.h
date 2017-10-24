@@ -10,11 +10,23 @@ public:
     
     const Key k;
     Value v;
-    
-    // TODO your code for KeyValuePair goes here
-    
-    
-    
+
+    KeyValuePair(const Key kIn, Value vIn)
+            : k(kIn), v(vIn){
+
+    }
+
+    KeyValuePair(const Key kIn)
+            : k(kIn){
+
+    }
+
+    bool operator<(const KeyValuePair & other) const{
+        return (k < other.k);
+    }
+
+
+
 };
 
 
@@ -42,11 +54,30 @@ public:
     void write(ostream & o) const {
         tree.write(o);
     }
+
+    KeyValuePair<Key,Value>* find (const Key & k){
+
+
+        if(tree.find(KeyValuePair<Key, Value>(k)) != nullptr) {
+
+
+            if (KeyValuePair<Key, Value>(k) < tree.find(KeyValuePair<Key, Value>(k))->data) {
+                return nullptr;
+            } else if (tree.find(KeyValuePair<Key, Value>(k))->data < KeyValuePair<Key, Value>(k)) {
+                return nullptr;
+            } else {
+
+                return &(tree.find(KeyValuePair<Key, Value>(k))->data);
+            }
+
+        } else{
+            return nullptr;
+        }
+
+
+    };
     
-    // TODO your code for TreeMap goes here:
-    
-    
-    
+
     
 };
 

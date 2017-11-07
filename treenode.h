@@ -77,6 +77,53 @@ public:
 
 };
 
+template<typename T>
+class TreeNodeIterator {
+
+private:
+
+    TreeNode<T>* current;
+
+public:
+
+
+    TreeNodeIterator(TreeNode<T>* currentIn)
+            : current(currentIn) {
+    }
+
+    T & operator*() {
+        return current->data;
+    }
+
+    TreeNodeIterator<T> & operator++ (){
+        current = current->parent;
+        return *this;
+    }
+
+     bool operator== (const TreeNodeIterator<T> & toCompare) const{
+
+         if(current == toCompare.current){
+             return true;
+         }
+         return false;
+
+    }
+
+
+    bool operator!= (const TreeNodeIterator<T> &  toCompare) const {
+
+        if(current != toCompare.current){
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+
+};
+
 
 // do not edit below this line
 

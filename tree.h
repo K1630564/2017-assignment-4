@@ -125,6 +125,53 @@ public:
         }
     }
 
+
+    TreeNodeIterator<T> begin() const{
+        TreeNode<T> *current = root.get();
+        TreeNodeIterator<T> temp = TreeNodeIterator<T>(current);
+
+
+
+        if(current == nullptr){
+            cout << "ett " << endl;
+            return temp;
+
+        }
+
+       else if(current->leftChild == nullptr){
+            temp = TreeNodeIterator<T>(current);
+            cout << "två " << endl;
+            return temp;
+        }
+
+        else{
+            while(current->leftChild != nullptr){
+                current = current->leftChild.get();
+
+
+                }
+            cout << current->data << endl;
+            temp = TreeNodeIterator<T>(current);
+            cout << "tre " << endl;
+            return temp;
+
+
+
+            }
+
+        }
+    TreeNodeIterator<T> end() const{
+
+
+        TreeNodeIterator<T> empty = TreeNodeIterator<T>(nullptr);
+        cout << "end" << endl;
+        return empty;
+    }
+
+
+
+
+
 };
 
 
